@@ -47,10 +47,15 @@ public class TargetController : MonoBehaviour
         modeloCompleto.SetActive(false);
         colisionador.enabled = false;
 
-        // Spawnear el target roto en la misma posición y rotación
+        // Spawnear el target roto
         GameObject roto = Instantiate(prefabRoto, transform.position, transform.rotation);
-
-        // El roto se autodestruye a los X segundos
         Destroy(roto, tiempoRespawn);
+
+        // Sumar puntos al ScoreManager
+        if (ScoreManager.instancia != null)
+        {
+            ScoreManager.instancia.SumarPuntos(100);
+        }
     }
+
 }
