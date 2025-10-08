@@ -944,15 +944,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2810912458476006322, guid: b93f9bfc5eb988b42a29679025b6040e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2810912458476006322, guid: b93f9bfc5eb988b42a29679025b6040e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2810912458476006322, guid: b93f9bfc5eb988b42a29679025b6040e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2810912458476006322, guid: b93f9bfc5eb988b42a29679025b6040e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2049,6 +2049,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6017435339195919356, guid: 0fa6cdc284aa6f94ba8a9c176f0c086f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1869481065}
+    - targetCorrespondingSourceObject: {fileID: 6017435339195919356, guid: 0fa6cdc284aa6f94ba8a9c176f0c086f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1869481071}
   m_SourcePrefab: {fileID: 100100000, guid: 0fa6cdc284aa6f94ba8a9c176f0c086f, type: 3}
 --- !u!1 &1869481064 stripped
 GameObject:
@@ -2072,6 +2075,28 @@ MonoBehaviour:
   - {fileID: 820979556}
   - {fileID: 1260252376}
   velocidad: 6
+--- !u!64 &1869481071
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869481064}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2403435677658566425, guid: 2490409ffd48194458ced5f393f84f17, type: 3}
 --- !u!1 &1876467465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,6 +2147,8 @@ MonoBehaviour:
   sensitivityX: 100
   sensitivityY: 100
   maxDistance: 7
+  startRotationX: 180
+  startRotationY: 0
 --- !u!1 &2027067697
 GameObject:
   m_ObjectHideFlags: 0

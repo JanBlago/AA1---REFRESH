@@ -1,16 +1,20 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraOrbit : MonoBehaviour
 {
     [Header("Referencias")]
-    public Transform pivot;             // Objeto vacÌo en el centro de la pistola
-    public Transform cameraTransform;   // La c·mara real
+    public Transform pivot;             // Objeto vac√≠o en el centro de la pistola
+    public Transform cameraTransform;   // La c√°mara real
 
-    [Header("ConfiguraciÛn")]
+    [Header("Configuraci√≥n")]
     public float sensitivityX = 100f;
     public float sensitivityY = 100f;
     public float maxDistance = 5f;
+
+    [Header("Rotaci√≥n Inicial (en grados)")]
+    public float startRotationX = 0f;   // Yaw (izquierda/derecha)
+    public float startRotationY = 20f;  // Pitch (arriba/abajo)
 
     private PlayerControls controls;
     private Vector2 moveInput;
@@ -20,6 +24,14 @@ public class CameraOrbit : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerControls();
+    }
+
+    private void Start()
+    {
+        // ‚úÖ Inicializar la c√°mara con los grados definidos
+        rotationX = startRotationX;
+        rotationY = startRotationY;
+        pivot.rotation = Quaternion.Euler(rotationY, rotationX, 0f);
     }
 
     private void OnEnable()
@@ -35,27 +47,26 @@ public class CameraOrbit : MonoBehaviour
         controls.Camera.Move.canceled -= ctx => moveInput = Vector2.zero;
         controls.Camera.Disable();
     }
+
     private void Update()
     {
-        // RotaciÛn con WASD
+        // Rotaci√≥n con WASD
         rotationX += moveInput.x * sensitivityX * Time.deltaTime;   // izquierda/derecha
         rotationY -= moveInput.y * sensitivityY * Time.deltaTime;   // arriba/abajo
         rotationY = Mathf.Clamp(rotationY, -80f, 80f);
 
         pivot.rotation = Quaternion.Euler(rotationY, rotationX, 0f);
 
-        // Raycast para colisiones de c·mara
+        // Raycast para colisiones de c√°mara
         RaycastHit hit;
         Vector3 desiredPosition = pivot.position - pivot.forward * maxDistance;
 
         if (Physics.Raycast(pivot.position, -pivot.forward, out hit, maxDistance))
         {
-            // Si choca con algo, poner c·mara en el punto de impacto
             cameraTransform.position = hit.point;
         }
         else
         {
-            // Si no choca, poner c·mara en distancia m·xima
             cameraTransform.position = desiredPosition;
         }
 
